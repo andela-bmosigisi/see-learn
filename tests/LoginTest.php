@@ -33,4 +33,19 @@ class LoginTest extends TestCase
         $this->assertEquals(200, $response->status());
         $this->assertEquals('auth.login', $response->original->name());
     }
+
+    /**
+     * Test that user is actually logged in.
+     *
+     * @return void
+     */
+    public function testLogin()
+    {
+        $user = factory('Burayan\User')->make();
+        $this->visit('login')
+            ->type($user->email, 'email')
+            ->password('password', 'password')
+            ->click('Login')
+            ->see('Dashboard');
+    }
 }
