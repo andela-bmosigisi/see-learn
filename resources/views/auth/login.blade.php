@@ -2,10 +2,12 @@
 
 @section('content')
     @include('partials.navigation')
+
     <div class="row">
       <div class="col-lg-6 col-md-offset-3">
         <div class="well bs-component">
-          <form class="form-horizontal">
+          <form class="form-horizontal" method="POST" action="/login">
+            {{ csrf_field() }}
             <fieldset>
               <legend>Login</legend>
               <div class="form-group">
