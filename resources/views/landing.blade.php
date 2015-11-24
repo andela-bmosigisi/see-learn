@@ -27,9 +27,5 @@
       <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
     </div>
   </div>
-  <!-- Site footer -->
-  <footer class="footer">
-    <p>&copy; Company 2014</p>
-  </footer>
+  @include('partials.footer')
 @endsection
-
