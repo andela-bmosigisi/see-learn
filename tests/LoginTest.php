@@ -41,7 +41,7 @@ class LoginTest extends TestCase
      */
     public function testLogin()
     {
-        $user = factory('Burayan\User')->make();
+        $user = factory('Learn\User')->make();
         $this->visit('login')
             ->type($user->email, 'email')
             ->password('password', 'password')
