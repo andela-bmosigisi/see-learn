@@ -30,8 +30,7 @@ class LoginTest extends TestCase
             'password' => 'testing',
             '_token' => csrf_token()
         ]);
-        $this->assertEquals(200, $response->status());
-        $this->assertEquals('auth.login', $response->original->name());
+        $this->assertEquals(302, $response->status());
     }
 
     /**
@@ -41,11 +40,12 @@ class LoginTest extends TestCase
      */
     public function testLogin()
     {
-        $user = factory('Learn\User')->make();
-        $this->visit('login')
+        Session::start();
+        $user = factory('Learn\User')->create();
+        $this->visit('/login')
             ->type($user->email, 'email')
-            ->password('password', 'password')
-            ->click('Login')
-            ->see('Dashboard');
+            ->type('password', 'password')
+            ->press('Login')
+            ->see('Marketing');
     }
 }
