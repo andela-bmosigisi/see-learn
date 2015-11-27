@@ -14,7 +14,7 @@ class RegisterTest extends TestCase
     public function testLoadRegisterPage()
     {
         $this->visit('/register')
-            ->see('Create Account');
+            ->see('Register');
     }
 
     /**
@@ -27,8 +27,8 @@ class RegisterTest extends TestCase
         $this->visit('/register')
             ->type('username', 'username')
             ->type('password', 'password')
-            ->type('password', 'confirmPassword')
+            ->type('password', 'password_confirmation')
             ->press('Register')
-            ->see('successful');
+            ->see('Learn');
     }
 }
