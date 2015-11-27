@@ -5,6 +5,7 @@ php:
 branches:
   only:
     - master
+    - staging
     - develop
     - feature/coveralls
 
