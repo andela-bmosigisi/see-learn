@@ -1,7 +1,11 @@
 <?php
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+
 class LoginTest extends TestCase
 {
+    use DatabaseMigrations;
+
     /**
      * Test login page is loaded.
      *

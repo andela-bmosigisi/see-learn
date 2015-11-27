@@ -1,7 +1,11 @@
 <?php
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+
 class RegisterTest extends TestCase
 {
+    use DatabaseMigrations;
+
     /**
      * Test registration page is loaded.
      *
