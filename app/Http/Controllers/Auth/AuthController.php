@@ -2,8 +2,9 @@
 
 namespace Learn\Http\Controllers\Auth;
 
-use Learn\User;
+use Socialite;
 use Validator;
+use Learn\User;
 use Learn\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -64,5 +65,33 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * Redirect the user to the provider authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToProvider($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return Response
+     */
+    public function handleProviderCallback($provider)
+    {
+        $user = Socialite::driver($provider)->user();
+
+        $user->getId();
+        $user->getNickname();
+        $user->getName();
+        $user->getEmail();
+        $user->getAvatar();
+
+        dd($user);
     }
 }
