@@ -35,6 +35,7 @@
           </fieldset>
         </form>
       </div>
+      @include('partials.social')
     </div>
   </div>
 
