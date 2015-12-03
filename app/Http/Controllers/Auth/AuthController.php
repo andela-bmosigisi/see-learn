@@ -57,11 +57,11 @@ class AuthController extends Controller
         $user = Socialite::driver($provider)->user();
 
         $userData = [
-            'social_id' => $user->getId() . '',
-            'name' => $user->getName(),
-            'avatar' => $user->getAvatar(),
-            'provider' => $provider,
-            'email' => $user->getEmail(),
+            'social_id' => $user->getId().'',
+            'name'      => $user->getName(),
+            'avatar'    => $user->getAvatar(),
+            'provider'  => $provider,
+            'email'     => $user->getEmail(),
         ];
 
         $user = $this->findOrCreateSocialUser($userData);
@@ -110,9 +110,10 @@ class AuthController extends Controller
     {
         $user = User::where('social_id', $data['social_id'])->first();
 
-        if(is_null($user)) {
+        if (is_null($user)) {
             return User::create($data);
         }
+
         return $user;
     }
 }

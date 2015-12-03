@@ -18,7 +18,7 @@ class RegisterTest extends TestCase
     }
 
     /**
-     * Test a user is registered
+     * Test a user is registered.
      *
      * @return void
      */

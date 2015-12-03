@@ -28,7 +28,7 @@ class LoginTest extends TestCase
         $response = $this->call('POST', '/login', [
             'email' => 'testing@testing.com',
             'password' => 'testing',
-            '_token' => csrf_token()
+            '_token' => csrf_token(),
         ]);
         $this->assertEquals(302, $response->status());
     }
