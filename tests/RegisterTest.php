@@ -25,7 +25,7 @@ class RegisterTest extends TestCase
     public function testRegister()
     {
         $this->visit('/register')
-            ->type('username', 'username')
+            ->type('My Name', 'name')
             ->type('password', 'password')
             ->type('password', 'password_confirmation')
             ->press('Register')
