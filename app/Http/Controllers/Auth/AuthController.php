@@ -38,6 +38,39 @@ class AuthController extends Controller
     }
 
     /**
+     * Redirect the user to the provider authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToProvider($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return Response
+     */
+    public function handleProviderCallback($provider)
+    {
+        $user = Socialite::driver($provider)->user();
+
+        $userData = [
+            'social_id' => $user->getId() . '',
+            'name' => $user->getName(),
+            'avatar' => $user->getAvatar(),
+            'provider' => $provider,
+            'email' => $user->getEmail(),
+        ];
+
+        $user = $this->findOrCreateSocialUser($userData);
+        auth()->login($user);
+
+        return redirect($this->redirectPath);
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -68,30 +101,18 @@ class AuthController extends Controller
     }
 
     /**
-     * Redirect the user to the provider authentication page.
+     * Find or create a new instance of a social user.
      *
-     * @return Response
+     * @param array $data
+     * @return User
      */
-    public function redirectToProvider($provider)
+    protected function findOrCreateSocialUser(array $data)
     {
-        return Socialite::driver($provider)->redirect();
-    }
+        $user = User::where('social_id', $data['social_id'])->first();
 
-    /**
-     * Obtain the user information from GitHub.
-     *
-     * @return Response
-     */
-    public function handleProviderCallback($provider)
-    {
-        $user = Socialite::driver($provider)->user();
-
-        $user->getId();
-        $user->getNickname();
-        $user->getName();
-        $user->getEmail();
-        $user->getAvatar();
-
-        dd($user);
+        if(is_null($user)) {
+            return User::create($data);
+        }
+        return $user;
     }
 }
