@@ -26,9 +26,10 @@ class RegisterTest extends TestCase
     {
         $this->visit('/register')
             ->type('My Name', 'name')
+            ->type('name@name.com', 'email')
             ->type('password', 'password')
             ->type('password', 'password_confirmation')
             ->press('Register')
-            ->see('Learn');
+            ->seePageIs('/');
     }
 }
