@@ -15,14 +15,14 @@ class UserProfileController extends Controller
     }
 
     /**
-     * Display the specified user profile.
+     * Display the specified user's dashboard.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        return view('user.dashboard', ['user' => auth()->user()]);
     }
 
     /**
