@@ -11,9 +11,9 @@
           <fieldset>
             <legend>Register</legend>
             <div class="form-group">
-              <label for="username" class="col-lg-2 control-label">Username</label>
+              <label for="name" class="col-lg-2 control-label">Name</label>
               <div class="col-lg-10">
-                <input type="text" class="form-control" placeholder="username" name="username" value="{{ old('username') }}" required>
+                <input type="text" class="form-control" placeholder="name" name="name" value="{{ old('name') }}" required>
               </div>
             </div>
             <div class="form-group">
@@ -42,6 +42,7 @@
           </fieldset>
         </form>
       </div>
+      @include('partials.social')
     </div>
   </div>
 
