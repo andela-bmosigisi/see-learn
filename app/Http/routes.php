@@ -32,3 +32,8 @@ Route::get(
     'login/{provider}/callback',
     'Auth\AuthController@handleProviderCallback'
 );
+
+// User profile routes
+Route::get('user/{id}', 'Learn\UserProfileController@show');
+Route::get('user/{id}/edit', 'Learn\UserProfileController@edit');
+Route::post('user/{id}/update', 'Learn\UserProfileController@update');
