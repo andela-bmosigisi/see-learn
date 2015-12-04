@@ -18,17 +18,18 @@ class RegisterTest extends TestCase
     }
 
     /**
-     * Test a user is registered
+     * Test a user is registered.
      *
      * @return void
      */
     public function testRegister()
     {
         $this->visit('/register')
-            ->type('username', 'username')
+            ->type('My Name', 'name')
+            ->type('name@name.com', 'email')
             ->type('password', 'password')
             ->type('password', 'password_confirmation')
             ->press('Register')
-            ->see('Learn');
+            ->seePageIs('/');
     }
 }

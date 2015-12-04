@@ -1,3 +1,19 @@
 @import "variables";
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "bootswatch";
+@import "font-awesome/scss/font-awesome.scss";
+@import "bootstrap-social.scss";
+
+.social ul li {
+    display: inline-block;
+    padding: 5px 20px 20px 20px;
+    margin: 5px 30px 30px 30px;
+}
+
+.social ul {
+    list-style-type: none;
+}
+body {
+    background-image: url('/img/bkg.png');
+    background-repeat: repeat-x;
+}

@@ -2,8 +2,9 @@
 
 namespace Learn\Http\Controllers\Auth;
 
-use Learn\User;
+use Socialite;
 use Validator;
+use Learn\User;
 use Learn\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -37,6 +38,39 @@ class AuthController extends Controller
     }
 
     /**
+     * Redirect the user to the provider authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToProvider($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return Response
+     */
+    public function handleProviderCallback($provider)
+    {
+        $user = Socialite::driver($provider)->user();
+
+        $userData = [
+            'social_id' => $user->getId().'',
+            'name'      => $user->getName(),
+            'avatar'    => $user->getAvatar(),
+            'provider'  => $provider,
+            'email'     => $user->getEmail(),
+        ];
+
+        $user = $this->findOrCreateSocialUser($userData);
+        auth()->login($user);
+
+        return redirect($this->redirectPath);
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -45,7 +79,7 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => 'required|max:255',
+            'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
@@ -60,9 +94,26 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'username' => $data['username'],
+            'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * Find or create a new instance of a social user.
+     *
+     * @param array $data
+     * @return User
+     */
+    protected function findOrCreateSocialUser(array $data)
+    {
+        $user = User::where('social_id', $data['social_id'])->first();
+
+        if (is_null($user)) {
+            return User::create($data);
+        }
+
+        return $user;
     }
 }

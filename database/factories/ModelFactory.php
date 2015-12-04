@@ -13,7 +13,7 @@
 
 $factory->define(Learn\User::class, function (Faker\Generator $faker) {
     return [
-        'username' => $faker->word,
+        'name' => $faker->word,
         'email' => $faker->email,
         'password' => bcrypt('password'),
         'remember_token' => str_random(10),
