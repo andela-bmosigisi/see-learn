@@ -16,11 +16,21 @@
       <p> Uploads: <span class="large-text">20</span></p>
     </div>
     <div class="col-lg-3">
-      <h3>Categories</h3>
-      <!-- Loop through categories created by this user -->
+      <h3>
+        Uploads
+        <a href="/videos/add" class="btn btn-primary btn-sm">
+          <i class="fa fa-lg fa-plus"></i>
+        </a>
+      </h3>
     </div>
     <div class="col-lg-3">
-      <h3>Latest Uploads</h3>
+      <h3>
+        Categories 
+        <a href="/categories/add" class="btn btn-primary btn-sm">
+          <i class="fa fa-lg fa-plus"></i>
+        </a>
+      </h3>
+      <!-- Loop through categories created by this user -->
     </div>
   </div>
   <div class="row">
@@ -100,4 +110,6 @@
       <p> Short Description that describes this video and can be multi-line, for all I care. </p>
     </div>
   </div>
+
+  @include('partials.footer')
 @endsection

@@ -33,7 +33,7 @@ class UserProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('user.edit', ['user' => auth()->user()]);
     }
 
     /**
@@ -46,6 +46,6 @@ class UserProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Take new avatar, upload to cloudinary, and save url to user.
     }
 }
