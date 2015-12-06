@@ -28,3 +28,27 @@ body {
 .nav-search {
     margin-top: 15px;
 }
+.profile-pic {
+    width: 240px;
+    height: 240px;
+    margin: auto;
+    border: solid #F4F4F4 1px;
+}
+#pic-div {
+    background-color: white;
+}
+.large-text {
+    font-size: 120%;
+}
+.video-thumbnail {
+    width: 350px;
+    padding: 20px 20px 20px 0px;
+}
+.section-title {
+    padding: 20px;
+    border-bottom: solid #E7E7E7 1px;
+}
+.video-container {
+    margin-top: 10px;
+    border-bottom: solid #E7E7E7 1px;
+}
