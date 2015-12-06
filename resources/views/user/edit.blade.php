@@ -26,14 +26,14 @@
         </div>
         <div class="form-group">
           <label for="inputName" class="col-lg-2 control-label">Name: </label>
-          <div class="col-lg-4">
+          <div class="col-lg-10">
             <input type="text" class="form-control" name="name" value="{{ $user->name }}">
           </div>
         </div>
         <div class="form-group">
           <label for="inputEmail" class="col-lg-2 control-label">Email: </label>
           <div class="col-lg-10">
-            <input type="email" class="form-control" placeholder="Email" name="email"
+            <input type="email" class="form-control" name="email"
               value="{{ $user->email or 'no email.' }}">
           </div>
         </div>
