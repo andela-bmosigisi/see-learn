@@ -16,7 +16,10 @@
         <button type="submit" class="btn btn-default">Search</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-      @if (isset($user))
+      @if (null !== ($user = auth()->user()))
+        <li class="profile-list">
+          <img src="{{ $user->avatar or '/img/avatar.png' }}" class="profile-image img-circle">
+        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
             {{ $user->name }}
@@ -25,11 +28,6 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="/user/{{ $user->id }}/edit">Profile</a></li>
             <li><a href="/logout">Sign Out</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
           </ul>
         </li>
       @else

@@ -8859,4 +8859,12 @@ body {
   background-image: url("/img/bkg.png");
   background-repeat: repeat-x; }
 
+.profile-list {
+  line-height: 60px; }
+
+.profile-image {
+  width: 30px;
+  height: 30px;
+  margin: auto; }
+
 /*# sourceMappingURL=app.css.map */
