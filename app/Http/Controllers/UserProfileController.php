@@ -3,9 +3,7 @@
 namespace Learn\Http\Controllers;
 
 use Learn\User;
-use Illuminate\Http\Request;
 use Learn\Helpers\FileUploader;
-use Learn\Http\Controllers\Controller;
 use Learn\Http\Requests\UserProfileRequest;
 
 class UserProfileController extends Controller

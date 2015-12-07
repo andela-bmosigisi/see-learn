@@ -2,8 +2,6 @@
 
 namespace Learn\Http\Requests;
 
-use Learn\Http\Requests\Request;
-
 class UserProfileRequest extends Request
 {
     /**
