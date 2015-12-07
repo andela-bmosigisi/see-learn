@@ -3,9 +3,9 @@
 namespace Learn\Http\Controllers;
 
 use Learn\User;
-use Learn\Http\Requests;
 use Illuminate\Http\Request;
 use Learn\Http\Controllers\Controller;
+use Learn\Http\Requests\UserProfileRequest;
 
 class UserProfileController extends Controller
 {
@@ -44,8 +44,15 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserProfileRequest $request, $id)
     {
         // Take new avatar, upload to cloudinary, and save url to user.
+
+        $user = User::find($id);
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->save();
+
+        return redirect('/dashboard');
     }
 }
