@@ -27,6 +27,7 @@ class UserProfileRequest extends Request
         return [
             'name' => 'required|min:6|max:60',
             'email' => 'required|email',
+            'avatar' => 'mimes:jpeg,bmp,png',
         ];
     }
 }

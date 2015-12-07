@@ -16,7 +16,8 @@
     </div>
     <div class="col-lg-6">
       @include('partials.alert')
-      <form class="form-horizontal" method="POST" action="/user/{{ $user->id }}/update">
+      <form class="form-horizontal" method="POST" action="/user/{{ $user->id }}/update"
+        enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="form-group">
           <label for="inputFile" class="col-lg-2 control-label file-upload">Avatar </label>

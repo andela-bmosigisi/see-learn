@@ -4,6 +4,7 @@ namespace Learn\Http\Controllers;
 
 use Learn\User;
 use Illuminate\Http\Request;
+use Learn\Helpers\FileUploader;
 use Learn\Http\Controllers\Controller;
 use Learn\Http\Requests\UserProfileRequest;
 
@@ -38,7 +39,7 @@ class UserProfileController extends Controller
 
     /**
      * Update the specified user profile in storage.
-     * Receives POST from user/{id}/update
+     * Receives POST from user/{id}/update.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -46,9 +47,15 @@ class UserProfileController extends Controller
      */
     public function update(UserProfileRequest $request, $id)
     {
-        // Take new avatar, upload to cloudinary, and save url to user.
-
         $user = User::find($id);
+        if ($request->hasFile('avatar')) {
+            // Take new avatar, upload to cloudinary.
+            $avatar = $request->file('avatar');
+            $uploader = new FileUploader();
+            $uploadedFile = $uploader->uploadFile($avatar);
+            $user->avatar = $uploadedFile['url'];
+        }
+
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->save();
