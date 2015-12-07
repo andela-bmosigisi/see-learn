@@ -30,6 +30,6 @@ class RegisterTest extends TestCase
             ->type('password', 'password')
             ->type('password', 'password_confirmation')
             ->press('Register')
-            ->seePageIs('/');
+            ->seePageIs('/dashboard');
     }
 }

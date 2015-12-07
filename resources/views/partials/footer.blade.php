@@ -1,4 +1,4 @@
 <!-- Site footer -->
 <footer class="footer">
-  <p>&copy; Company 2014</p>
+  <p>&copy; See, learn 2015</p>
 </footer>
