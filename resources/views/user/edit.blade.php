@@ -15,6 +15,7 @@
       </div>
     </div>
     <div class="col-lg-6">
+      @include('partials.alert')
       <form class="form-horizontal" method="POST" action="/user/{{ $user->id }}/update">
         {{ csrf_field() }}
         <div class="form-group">
