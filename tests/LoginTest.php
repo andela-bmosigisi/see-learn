@@ -46,6 +46,6 @@ class LoginTest extends TestCase
             ->type($user->email, 'email')
             ->type('password', 'password')
             ->press('Login')
-            ->see('Learn');
+            ->seePageIs('/dashboard');
     }
 }
