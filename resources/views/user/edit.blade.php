@@ -21,13 +21,13 @@
           <label for="inputFile" class="col-lg-2 control-label file-upload">Avatar </label>
           <div class="input-group col-lg-6">
             <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-lg fa-upload"></i></span>
-            <input type="file" class="form-control" aria-describedby="sizing-addon2">
+            <input type="file" class="form-control" aria-describedby="sizing-addon2" name="avatar">
           </div>
         </div>
         <div class="form-group">
           <label for="inputName" class="col-lg-2 control-label">Name: </label>
           <div class="col-lg-10">
-            <input type="text" class="form-control" name="name" value="{{ $user->name }}">
+            <input type="text" class="form-control" name="name" value="{{ $user->name }}" required>
           </div>
         </div>
         <div class="form-group">
@@ -39,7 +39,7 @@
         </div>
         <div class="form-group">
           <div class="col-lg-10 col-lg-offset-2">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Update</button>
           </div>
         </div>
       </form>
