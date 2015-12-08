@@ -38,3 +38,8 @@ Route::get('dashboard', 'UserProfileController@show');
 // User profile routes
 Route::get('user/{id}/edit', 'UserProfileController@edit');
 Route::post('user/{id}/update', 'UserProfileController@update');
+
+// Video routes
+Route::get('videos/add', 'VideoController@create');
+Route::post('videos/add', 'VideoController@store');
+Route::get('videos/{id}', 'VideoController@show');
