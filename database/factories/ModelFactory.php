@@ -28,7 +28,7 @@ $factory->define(Learn\Video::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->word,
         'description' => $faker->sentence,
-        'url' => 'https://www.youtube.com/watch?v='.
+        'link' => 'https://www.youtube.com/watch?v='.
             $randomVideoIds[rand(1, $length - 1)],
         'user_id' => factory('Learn\User')->create()->id,
     ];
