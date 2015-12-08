@@ -8,9 +8,10 @@ use Learn\Http\Requests\UserProfileRequest;
 
 class UserProfileController extends Controller
 {
-    public function __contruct()
+    public function __construct()
     {
         $this->middleware('auth');
+        $this->user = auth()->user();
     }
 
     /**
@@ -21,7 +22,7 @@ class UserProfileController extends Controller
      */
     public function show()
     {
-        return view('user.dashboard', ['user' => auth()->user()]);
+        return view('user.dashboard', ['user' => $this->user]);
     }
 
     /**
@@ -32,7 +33,7 @@ class UserProfileController extends Controller
      */
     public function edit($id)
     {
-        return view('user.edit', ['user' => auth()->user()]);
+        return view('user.edit', ['user' => $this->user]);
     }
 
     /**
