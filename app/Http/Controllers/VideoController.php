@@ -34,14 +34,19 @@ class VideoController extends Controller
     {
         // Extract video_id from the youtube link.
         $youtubeLink = $request->input('link');
-        $idRegex = '';
-        $youtubeId = 'AWLLOTKrNok';
+        $idRegex = '/^
+            (?:https?:\/\/www.youtube.com\/)
+            (?:watch\?v=| e\/ | embed\/)
+            ([\w-]{10,12})
+            (?:&.*)?
+        $/x';
+        preg_match($idRegex, $youtubeLink, $matches);
 
         $video = Video::create([
-            'youtube_id' => $youtubeId,
+            'youtube_id' => $matches[1],
             'title' => $request->input('title'),
             'description' => $request->input('description'),
-            'user_id' => $this->user->id
+            'user_id' => $this->user->id,
         ]);
 
         return redirect('videos/'. $video->id);
