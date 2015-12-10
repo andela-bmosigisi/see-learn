@@ -12,9 +12,7 @@
 */
 
 // Display the landing page
-Route::get('/', function () {
-    return view('landing');
-});
+Route::get('/', 'VideoController@index');
 
 // Authentication routes
 Route::get('login', 'Auth\AuthController@getLogin');

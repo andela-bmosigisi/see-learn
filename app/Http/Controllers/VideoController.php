@@ -2,6 +2,7 @@
 
 namespace Learn\Http\Controllers;
 
+use DB;
 use Learn\Video;
 use Illuminate\Http\Request;
 use Learn\Http\Requests\VideoFormRequest;
@@ -10,8 +11,20 @@ class VideoController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['show']]);
+        $this->middleware('auth', ['except' => ['show', 'index']]);
         $this->user = auth()->user();
+    }
+
+    /**
+     * Display the videos listing, in the landing page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $videos = DB::table('videos')->paginate(6);
+
+        return view('landing', ['videos' => $videos]);
     }
 
     /**

@@ -65,3 +65,16 @@ body {
     padding: 10px;
     border: solid $gray-lighter 1px;
 }
+.landing-title {
+    text-align: center;
+    color: $gray-lighter;
+}
+.landing-title li {
+    text-align: left;
+    list-style-type: none;
+    font-size: 110%;
+    margin-left: 50px;
+}
+.jumbotron {
+    background-image: url('/img/landing.jpg');
+}

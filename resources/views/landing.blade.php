@@ -2,30 +2,51 @@
 
 @section('content')
   @include('partials.navigation')
-  <!-- Jumbotron -->
+  
   <div class="jumbotron">
-    <h1>Learn</h1>
-    <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
-    <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>
+    <div class="row">
+      <div class="col-lg-4 col-sm-offset-4 landing-title">
+        <h1>Learn</h1>
+        <p class="lead">
+          Start learning with <strong>3</strong> simple steps
+          <ul>
+            <li><a href="/register">Create</a> an account</li>
+            <li>Upload a video</li>
+            <li>Get limitless watch time</li>
+          </ul>
+        </p>
+      </div>
+    </div>
   </div>
 
-  <!-- Example row of columns -->
   <div class="row">
-    <div class="col-lg-4">
-      <h2>Heading</h2>
-      <p>Put video here.</p>
-      <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-    </div>
-    <div class="col-lg-4">
-      <h2>Heading</h2>
-      <p>Put video here.</p>
-      <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-   </div>
-    <div class="col-lg-4">
-      <h2>Heading</h2>
-      <p>Put video here.</p>
-      <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-    </div>
+    @if (!is_null($videos))
+      @foreach($videos as $video)
+        <div class="col-lg-4 video-container">
+          <a href="/videos/{{ $video->id }}"><h4> {{ $video->title }} </h4></a>
+          <a href="/videos/{{ $video->id }}">
+            <img src="http://img.youtube.com/vi/{{ $video->youtube_id }}/hqdefault.jpg" class="video-thumbnail">
+          </a>
+          <p> 
+            {{
+              strlen($video->description) > 35 ? 
+              substr($video->description, 0, 35) . "..." : 
+              $video->description 
+            }}
+          </p>
+          <p>
+            <a href="/videos/{{ $video->id }}"> Watch</a>
+          </p>
+        </div>
+      @endforeach
+      <div class="divider"></div>
+      <div class="col-md-6">
+        {!! $videos->render() !!}
+      </div>
+    @else
+
+    @endif
   </div>
+
   @include('partials.footer')
 @endsection

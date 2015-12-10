@@ -8907,4 +8907,17 @@ body {
   padding: 10px;
   border: solid #F8F5F0 1px; }
 
+.landing-title {
+  text-align: center;
+  color: #F8F5F0; }
+
+.landing-title li {
+  text-align: left;
+  list-style-type: none;
+  font-size: 110%;
+  margin-left: 50px; }
+
+.jumbotron {
+  background-image: url("/img/landing.jpg"); }
+
 /*# sourceMappingURL=app.css.map */
