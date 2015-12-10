@@ -19,3 +19,16 @@ $factory->define(Learn\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(Learn\Video::class, function (Faker\Generator $faker) {
+    $randomVideoIds =
+        ['AWLLOTKrNok', 'EAK_MqX_ox4', 'ABRP_5RYhqU', 'dRfW7tuG6ZQ'];
+    $length = count($randomVideoIds);
+
+    return [
+        'title' => $faker->word,
+        'description' => $faker->sentence,
+        'youtube_id' => $randomVideoIds[rand(1, $length - 1)],
+        'user_id' => factory('Learn\User')->create()->id,
+    ];
+});

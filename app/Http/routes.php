@@ -12,9 +12,7 @@
 */
 
 // Display the landing page
-Route::get('/', function () {
-    return view('landing');
-});
+Route::get('/', 'VideoController@index');
 
 // Authentication routes
 Route::get('login', 'Auth\AuthController@getLogin');
@@ -32,3 +30,20 @@ Route::get(
     'login/{provider}/callback',
     'Auth\AuthController@handleProviderCallback'
 );
+
+Route::get('dashboard', [
+    'as' => 'dashboard',
+    'uses' => 'UserProfileController@show',
+]);
+
+// User profile routes
+Route::get('user/{id}/edit', 'UserProfileController@edit');
+Route::post('user/{id}/update', 'UserProfileController@update');
+
+// Video routes
+Route::get('videos/add', 'VideoController@create');
+Route::post('videos/add', 'VideoController@store');
+Route::get('videos/{id}', 'VideoController@show');
+Route::get('videos/edit/{id}', 'VideoController@edit');
+Route::get('videos/delete/{id}', 'VideoController@destroy');
+Route::post('videos/update/{id}', 'VideoController@update');

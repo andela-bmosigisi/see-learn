@@ -8859,4 +8859,65 @@ body {
   background-image: url("/img/bkg.png");
   background-repeat: repeat-x; }
 
+.profile-list {
+  line-height: 60px; }
+
+.profile-image {
+  width: 30px;
+  height: 30px;
+  margin: auto; }
+
+.nav-search {
+  margin-top: 15px; }
+
+.profile-pic {
+  width: 240px;
+  height: 240px;
+  margin: auto;
+  border: solid #F4F4F4 1px; }
+
+#pic-div {
+  background-color: white; }
+
+.large-text {
+  font-size: 120%; }
+
+.video-thumbnail {
+  width: 350px;
+  padding: 20px 20px 20px 0px; }
+
+.section-title {
+  padding: 20px;
+  border-bottom: solid #E7E7E7 1px; }
+
+.video-container {
+  margin-top: 10px;
+  border-bottom: solid #E7E7E7 1px; }
+
+.video-title {
+  padding: 5px;
+  border-bottom: solid #E7E7E7 1px;
+  color: #93C54B; }
+
+.file-upload {
+  margin-right: 15px; }
+
+.video-content {
+  display: inline-block;
+  padding: 10px;
+  border: solid #F8F5F0 1px; }
+
+.landing-title {
+  text-align: center;
+  color: #F8F5F0; }
+
+.landing-title li {
+  text-align: left;
+  list-style-type: none;
+  font-size: 110%;
+  margin-left: 50px; }
+
+.jumbotron {
+  background-image: url("/img/landing.jpg"); }
+
 /*# sourceMappingURL=app.css.map */
