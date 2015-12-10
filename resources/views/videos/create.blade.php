@@ -13,20 +13,20 @@
             <div class="form-group">
               <label for="title" class="col-lg-3 control-label">Title</label>
               <div class="col-lg-9">
-                <input type="text" class="form-control" placeholder="title" name="title" required>
+                <input type="text" class="form-control" value="{{ old('title') }}" placeholder="title" name="title" required>
               </div>
             </div>
             <div class="form-group">
               <label for="link" class="col-lg-3 control-label">Youtube link</label>
               <div class="col-lg-9">
                 <input type="text" class="form-control" placeholder="https://www.youtube.com/watch?v=XpqqjU7u5Yc"
-                  name="link" required>
+                  name="link" value="{{ old('link') }}" required>
               </div>
             </div>
             <div class="form-group">
               <label for="description" class="col-lg-3 control-label">Description</label>
               <div class="col-lg-9">
-                <textarea class="form-control" name="description"></textarea>
+                <textarea class="form-control" name="description">{{ old('description') }}</textarea>
               </div>
             </div>
             <!-- Add categories here -->
