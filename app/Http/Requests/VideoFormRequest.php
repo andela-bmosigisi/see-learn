@@ -24,7 +24,7 @@ class VideoFormRequest extends Request
         return [
             'title' => 'required|min:6|max:60',
             'description' => 'required|min:6|max:200',
-            'link' => 'required|min:6|max:60'
+            'link' => 'required|url|min:15|max:60|regex:/youtube/'
         ];
     }
 }
