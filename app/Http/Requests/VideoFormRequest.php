@@ -22,7 +22,7 @@ class VideoFormRequest extends Request
     public function rules()
     {
         return [
-            'title' => 'required|min:6|max:60',
+            'title' => 'required|max:60',
             'description' => 'required|min:6|max:200',
             'link' => 'required|url|min:15|max:60|regex:/youtube/'
         ];
