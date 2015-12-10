@@ -4,6 +4,7 @@
   @include('partials.navigation')
 
   <div class="row">
+    @include('partials.message')
     <div class="col-lg-3">
       <div id="pic-div">
         <img src="{{ $user->avatar or '/img/avatar.png' }}" class="profile-pic">

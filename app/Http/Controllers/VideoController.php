@@ -32,18 +32,10 @@ class VideoController extends Controller
      */
     public function store(VideoFormRequest $request)
     {
-        // Extract video_id from the youtube link.
-        $youtubeLink = $request->input('link');
-        $idRegex = '/^
-            (?:https?:\/\/www.youtube.com\/)
-            (?:watch\?v=| e\/ | embed\/)
-            ([\w-]{10,12})
-            (?:&.*)?
-        $/x';
-        preg_match($idRegex, $youtubeLink, $matches);
+        $youtube_id = $this->getVideoId($request->input('link'));
 
         $video = Video::create([
-            'youtube_id' => $matches[1],
+            'youtube_id' => $youtube_id,
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'user_id' => $this->user->id,
@@ -85,7 +77,11 @@ class VideoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $video = Video::find($id);
+        $video->link = 'http://www.youtube.com/watch?v='
+            .$video->youtube_id;
+
+        return view('videos.edit', ['video' => $video]);
     }
 
     /**
@@ -95,8 +91,51 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(VideoFormRequest $request, $id)
     {
-        //
+        $video = Video::find($id);
+        if (is_null($video)) {
+            return 'video not found';
+        }
+
+        $youtube_id = $this->getVideoId($request->input('link'));
+        $video->youtube_id = $youtube_id;
+        $video->title = $request->input('title');
+        $video->description = $request->input('description');
+        $video->save();
+
+        return redirect('videos/'. $video->id);
+    }
+
+    /**
+     * Delete a video by Id.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        Video::destroy($id);
+
+        return redirect('/dashboard')
+            ->with('msg', 'Video deleted successfully.');
+    }
+
+    /**
+     * Extract youtube video Id from youtube link.
+     *
+     * @param string
+     * @return string
+     */
+    private function getVideoId($youtubeLink)
+    {
+        $idRegex = '/^
+            (?:https?:\/\/www.youtube.com\/)
+            (?:watch\?v=| e\/ | embed\/)
+            ([\w-]{10,12})
+            (?:&.*)?
+        $/x';
+        preg_match($idRegex, $youtubeLink, $matches);
+
+        return $matches[1];
     }
 }

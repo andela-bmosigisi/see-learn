@@ -33,7 +33,10 @@ Route::get(
     'Auth\AuthController@handleProviderCallback'
 );
 
-Route::get('dashboard', 'UserProfileController@show');
+Route::get('dashboard', [
+    'as' => 'dashboard',
+    'uses' => 'UserProfileController@show',
+]);
 
 // User profile routes
 Route::get('user/{id}/edit', 'UserProfileController@edit');
@@ -43,3 +46,6 @@ Route::post('user/{id}/update', 'UserProfileController@update');
 Route::get('videos/add', 'VideoController@create');
 Route::post('videos/add', 'VideoController@store');
 Route::get('videos/{id}', 'VideoController@show');
+Route::get('videos/edit/{id}', 'VideoController@edit');
+Route::get('videos/delete/{id}', 'VideoController@destroy');
+Route::post('videos/update/{id}', 'VideoController@update');
