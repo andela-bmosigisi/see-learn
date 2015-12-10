@@ -17,4 +17,14 @@ class Video extends Model
         'description',
         'user_id'
     ];
+
+    /**
+     * A video belongs to a particular user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\Relation
+     */
+    public function user()
+    {
+        return $this->belongsTo('Learn\User');
+    }
 }

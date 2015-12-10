@@ -8894,7 +8894,17 @@ body {
   margin-top: 10px;
   border-bottom: solid #E7E7E7 1px; }
 
+.video-title {
+  padding: 5px;
+  border-bottom: solid #E7E7E7 1px;
+  color: #93C54B; }
+
 .file-upload {
   margin-right: 15px; }
+
+.video-content {
+  display: inline-block;
+  padding: 10px;
+  border: solid #F8F5F0 1px; }
 
 /*# sourceMappingURL=app.css.map */

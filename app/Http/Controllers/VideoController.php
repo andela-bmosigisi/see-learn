@@ -60,7 +60,21 @@ class VideoController extends Controller
      */
     public function show($id)
     {
-        return 'This is video '. $id;
+        $video = Video::find($id);
+
+        if (is_null($video)) {
+            return 'video not found';
+        }
+        $videoUrl = 'http://www.youtube.com/embed/'.$video->youtube_id;
+
+        return view(
+            'videos.watch',
+            [
+                'video' => $video,
+                'videoUrl' => $videoUrl,
+                'user' => $this->user
+            ]
+        );
     }
 
     /**
