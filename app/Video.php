@@ -15,7 +15,7 @@ class Video extends Model
         'youtube_id',
         'title',
         'description',
-        'user_id'
+        'user_id',
     ];
 
     /**

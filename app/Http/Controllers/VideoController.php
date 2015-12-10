@@ -4,7 +4,6 @@ namespace Learn\Http\Controllers;
 
 use DB;
 use Learn\Video;
-use Illuminate\Http\Request;
 use Learn\Http\Requests\VideoFormRequest;
 
 class VideoController extends Controller
@@ -54,7 +53,7 @@ class VideoController extends Controller
             'user_id' => $this->user->id,
         ]);
 
-        return redirect('videos/'. $video->id);
+        return redirect('videos/'.$video->id);
     }
 
     /**
@@ -77,7 +76,7 @@ class VideoController extends Controller
             [
                 'video' => $video,
                 'videoUrl' => $videoUrl,
-                'user' => $this->user
+                'user' => $this->user,
             ]
         );
     }
@@ -117,7 +116,7 @@ class VideoController extends Controller
         $video->description = $request->input('description');
         $video->save();
 
-        return redirect('videos/'. $video->id);
+        return redirect('videos/'.$video->id);
     }
 
     /**
