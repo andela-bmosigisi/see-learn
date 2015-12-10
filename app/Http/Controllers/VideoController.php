@@ -2,12 +2,18 @@
 
 namespace Learn\Http\Controllers;
 
+use Learn\Video;
 use Illuminate\Http\Request;
-
-use Learn\Http\Requests;
+use Learn\Http\Requests\VideoFormRequest;
 
 class VideoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['show']]);
+        $this->user = auth()->user();
+    }
+
     /**
      * Show the form for creating a new video.
      *
@@ -15,9 +21,7 @@ class VideoController extends Controller
      */
     public function create()
     {
-        $this->middleware('auth');
-
-        return view('videos.create', ['user' => auth()->user()]);
+        return view('videos.create', ['user' => $this->user]);
     }
 
     /**
@@ -26,9 +30,21 @@ class VideoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(VideoFormRequest $request)
     {
-        //
+        // Extract video_id from the youtube link.
+        $youtubeLink = $request->input('link');
+        $idRegex = '';
+        $youtubeId = 'AWLLOTKrNok';
+
+        $video = Video::create([
+            'youtube_id' => $youtubeId,
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'user_id' => $this->user->id
+        ]);
+
+        return redirect('videos/'. $video->id);
     }
 
     /**
@@ -39,7 +55,7 @@ class VideoController extends Controller
      */
     public function show($id)
     {
-        //
+        return 'This is video '. $id;
     }
 
     /**

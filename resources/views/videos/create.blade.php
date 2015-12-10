@@ -2,9 +2,9 @@
 
 @section('content')
   @include('partials.navigation')
-  @include('partials.alert')
   <div class="row">
     <div class="col-lg-6 col-md-offset-3">
+      @include('partials.alert')
       <div class="well bs-component">
         <form class="form-horizontal" method="POST" action="/videos/add">
           {{ csrf_field() }}
