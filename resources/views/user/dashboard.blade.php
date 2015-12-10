@@ -4,6 +4,7 @@
   @include('partials.navigation')
 
   <div class="row">
+    @include('partials.message')
     <div class="col-lg-3">
       <div id="pic-div">
         <img src="{{ $user->avatar or '/img/avatar.png' }}" class="profile-pic">
@@ -39,77 +40,32 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-4 video-container">
-      <a><h4> Some title </h4></a>
-      <a href="">
-        <img src="http://img.youtube.com/vi/XpqqjU7u5Yc/hqdefault.jpg" class="video-thumbnail">
-      </a>
-      <p> Short Description that describes this video</p>
-    </div>
-    <div class="col-lg-4 video-container">
-      <a><h4> Some title </h4></a>
-      <a href="">
-        <img src="http://img.youtube.com/vi/XpqqjU7u5Yc/hqdefault.jpg" class="video-thumbnail">
-      </a>
-      <p> Short Description that describes this video and can be multi-line, for all I care. </p>
-    </div>
-    <div class="col-lg-4 video-container">
-      <a><h4> Some title </h4></a>
-      <a href="">
-        <img src="http://img.youtube.com/vi/XpqqjU7u5Yc/hqdefault.jpg" class="video-thumbnail">
-      </a>
-      <p> Short Description that describes this video and can be multi-line, for all I care. </p>
-    </div>
-    <div class="col-lg-4 video-container">
-      <a><h4> Some title </h4></a>
-      <a href="">
-        <img src="http://img.youtube.com/vi/XpqqjU7u5Yc/hqdefault.jpg" class="video-thumbnail">
-      </a>
-      <p> Short Description that describes this video and can be multi-line, for all I care. </p>
-    </div>
-    <div class="col-lg-4 video-container">
-      <a><h4> Some title </h4></a>
-      <a href="">
-        <img src="http://img.youtube.com/vi/XpqqjU7u5Yc/hqdefault.jpg" class="video-thumbnail">
-      </a>
-      <p> Short Description that describes this video and can be multi-line, for all I care. </p>
-    </div>
-    <div class="col-lg-4 video-container">
-      <a><h4> Some title </h4></a>
-      <a href="">
-        <img src="http://img.youtube.com/vi/XpqqjU7u5Yc/hqdefault.jpg" class="video-thumbnail">
-      </a>
-      <p> Short Description that describes this video and can be multi-line, for all I care. </p>
-    </div>
-    <div class="col-lg-4 video-container">
-      <a><h4> Some title </h4></a>
-      <a href="">
-        <img src="http://img.youtube.com/vi/XpqqjU7u5Yc/hqdefault.jpg" class="video-thumbnail">
-      </a>
-      <p> Short Description that describes this video and can be multi-line, for all I care. </p>
-    </div>
-    <div class="col-lg-4 video-container">
-      <a><h4> Some title </h4></a>
-      <a href="">
-        <img src="http://img.youtube.com/vi/XpqqjU7u5Yc/hqdefault.jpg" class="video-thumbnail">
-      </a>
-      <p> Short Description that describes this video and can be multi-line, for all I care. </p>
-    </div>
-    <div class="col-lg-4 video-container">
-      <a><h4> Some title </h4></a>
-      <a href="">
-        <img src="http://img.youtube.com/vi/XpqqjU7u5Yc/hqdefault.jpg" class="video-thumbnail">
-      </a>
-      <p> Short Description that describes this video and can be multi-line, for all I care. </p>
-    </div>
-    <div class="col-lg-4 video-container">
-      <a><h4> Some title </h4></a>
-      <a href="">
-        <img src="http://img.youtube.com/vi/XpqqjU7u5Yc/hqdefault.jpg" class="video-thumbnail">
-      </a>
-      <p> Short Description that describes this video and can be multi-line, for all I care. </p>
-    </div>
+    @if ($user->videos->count() > 0)
+      @foreach($user->videos as $video)
+        <div class="col-lg-4 video-container">
+          <a href="/videos/{{ $video->id }}"><h4> {{ $video->title }} </h4></a>
+          <a href="/videos/{{ $video->id }}">
+            <img src="http://img.youtube.com/vi/{{ $video->youtube_id }}/hqdefault.jpg" class="video-thumbnail">
+          </a>
+          <p> 
+            {{
+              strlen($video->description) > 35 ? 
+              substr($video->description, 0, 35) . "..." : 
+              $video->description 
+            }}
+          </p>
+          <p>
+            <a href="/videos/{{ $video->id }}"> Watch</a>
+          </p>
+        </div>
+      @endforeach
+    @else
+      <div class="col-lg-5 col-sm-offset-4 video-container">
+        <p>
+          You are yet to add any videos. Click 
+          <a href="/videos/add">here</a> to add your first video.
+        </p>
+      </div>
+    @endif
   </div>
-
-  @include('partials.footer')
 @endsection

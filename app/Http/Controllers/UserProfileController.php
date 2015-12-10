@@ -40,7 +40,7 @@ class UserProfileController extends Controller
      * Update the specified user profile in storage.
      * Receives POST from user/{id}/update.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Learn\Http\Requests\UserProfileRequest $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
