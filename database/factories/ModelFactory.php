@@ -32,3 +32,11 @@ $factory->define(Learn\Video::class, function (Faker\Generator $faker) {
         'user_id' => factory('Learn\User')->create()->id,
     ];
 });
+
+$factory->define(Learn\Category::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'description' => $faker->sentence,
+        'user_id' => factory('Learn\User')->create()->id,
+    ];
+});
