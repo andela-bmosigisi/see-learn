@@ -14,7 +14,7 @@
       <a href="/user/{{ $user->id }}/edit"><h3>Profile</h3></a>
       <p> {{ $user->name }}</p>
       <p> {{ $user->email or 'no email' }} </p>
-      <p> Uploads: <span class="large-text">20</span></p>
+      <p> Uploads: <span class="large-text">{{ $count = $user->videos->count() }}</span></p>
     </div>
     <div class="col-lg-3">
       <h3>
@@ -40,7 +40,7 @@
     </div>
   </div>
   <div class="row">
-    @if ($user->videos->count() > 0)
+    @if ($count > 0)
       @foreach($user->videos as $video)
         <div class="col-lg-4 video-container">
           <a href="/videos/{{ $video->id }}"><h4> {{ $video->title }} </h4></a>

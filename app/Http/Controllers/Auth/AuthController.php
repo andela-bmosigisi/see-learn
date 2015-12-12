@@ -54,7 +54,11 @@ class AuthController extends Controller
      */
     public function handleProviderCallback($provider)
     {
-        $user = Socialite::driver($provider)->user();
+        try {
+            $user = Socialite::driver($provider)->user();
+        } catch (Exception $e) {
+            return redirect('/login/'.$provider);
+        }
 
         $userData = [
             'social_id' => $user->getId().'',
