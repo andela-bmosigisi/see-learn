@@ -2,7 +2,8 @@
 
 @section('content')
   @include('partials.navigation')
-  
+  @include('partials.message')
+
   <div class="jumbotron">
     <div class="row">
       <div class="col-lg-4 col-sm-offset-4 landing-title">
