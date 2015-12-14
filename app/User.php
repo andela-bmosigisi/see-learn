@@ -54,4 +54,14 @@ class User extends Model implements
     {
         return $this->hasMany('Learn\Video');
     }
+
+    /**
+     * A user may create many categories.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\Relation
+     */
+    public function categories()
+    {
+        return $this->hasMany('Learn\Category');
+    }
 }

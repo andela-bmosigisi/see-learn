@@ -4,14 +4,15 @@ namespace Learn\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Learn\Category;
 use Learn\Http\Requests;
-use Learn\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+        $this->user = auth()->user();
     }
 
     /**
@@ -21,7 +22,12 @@ class CategoryController extends Controller
      */
     public function manage()
     {
-        return view('categories.manage');
+        $categories = $this->user->categories;
+
+        return view(
+            'categories.manage',
+            ['categories' => $categories]
+        );
     }
 
     /**
@@ -66,6 +72,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::destroy($id);
+
+        return redirect('/categories/manage')
+            ->with('msg', 'Category deleted successfully.');
     }
 }

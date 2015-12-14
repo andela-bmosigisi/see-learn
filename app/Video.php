@@ -27,4 +27,14 @@ class Video extends Model
     {
         return $this->belongsTo('Learn\User');
     }
+
+    /**
+     * A video belongs to a particular category.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\Relation
+     */
+    public function category()
+    {
+        return $this->belongsTo('Learn\Category');
+    }
 }
