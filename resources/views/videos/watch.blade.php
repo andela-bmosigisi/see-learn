@@ -7,6 +7,9 @@
     <div class="row">
       <div class="col-lg-3 col-sm-offset-2 video-title">
         <h3> {{ $video->title }} </h3>
+        <p>Category: <a href="/categories/{{ $video->category->id }}">
+          {{ $video->category->name }}</a>
+        </p>
       </div>
     </div>
     <div class="row">

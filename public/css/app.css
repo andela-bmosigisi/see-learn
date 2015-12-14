@@ -8894,7 +8894,7 @@ body {
   margin-top: 10px;
   border-bottom: solid #E7E7E7 1px; }
 
-.video-title {
+.video-title h3 {
   padding: 5px;
   border-bottom: solid #E7E7E7 1px;
   color: #93C54B; }
@@ -8919,5 +8919,18 @@ body {
 
 .jumbotron {
   background-image: url("/img/landing.jpg"); }
+
+.category-area {
+  padding: 10px;
+  padding-top: 0px;
+  margin-bottom: 4px;
+  border-bottom: solid #DFD7CA 1px; }
+
+.category {
+  background-color: #F8F5F0;
+  border: solid #DFD7CA 1px; }
+
+.category-area a {
+  color: #3E3F3A; }
 
 /*# sourceMappingURL=app.css.map */

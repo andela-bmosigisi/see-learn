@@ -52,7 +52,7 @@ body {
     margin-top: 10px;
     border-bottom: solid #E7E7E7 1px;
 }
-.video-title {
+.video-title h3 {
     padding: 5px;
     border-bottom: solid #E7E7E7 1px;
     color: $brand-success;
@@ -77,4 +77,17 @@ body {
 }
 .jumbotron {
     background-image: url('/img/landing.jpg');
+}
+.category-area {
+    padding: 10px;
+    padding-top: 0px;
+    margin-bottom: 4px;
+    border-bottom: solid $gray-light 1px;
+}
+.category {
+    background-color: $gray-lighter;
+    border: solid $gray-light 1px;
+}
+.category-area a {
+    color: $text-color;
 }
