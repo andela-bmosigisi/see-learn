@@ -47,3 +47,6 @@ Route::get('videos/{id}', 'VideoController@show');
 Route::get('videos/edit/{id}', 'VideoController@edit');
 Route::get('videos/delete/{id}', 'VideoController@destroy');
 Route::post('videos/update/{id}', 'VideoController@update');
+
+// Category routes
+Route::get('categories/manage', 'CategoryController@manage');
