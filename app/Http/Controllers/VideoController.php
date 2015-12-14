@@ -2,7 +2,6 @@
 
 namespace Learn\Http\Controllers;
 
-use DB;
 use Learn\Video;
 use Learn\Category;
 use Learn\Http\Requests\VideoFormRequest;
@@ -26,8 +25,8 @@ class VideoController extends Controller
         $videos = Video::with('category')->paginate(6);
         $categories = Category::all();
 
-        return view('landing', ['videos' => $videos, 
-            'categories' => $categories
+        return view('landing', ['videos' => $videos,
+            'categories' => $categories,
         ]);
     }
 
@@ -66,7 +65,7 @@ class VideoController extends Controller
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'user_id' => $this->user->id,
-            'category_id' => (int)$request->input('category'),
+            'category_id' => (int) $request->input('category'),
         ]);
 
         return redirect('videos/'.$video->id);
@@ -111,7 +110,7 @@ class VideoController extends Controller
         $categories = Category::all();
 
         return view('videos.edit', ['video' => $video,
-            'categories' => $categories
+            'categories' => $categories,
         ]);
     }
 
@@ -133,7 +132,7 @@ class VideoController extends Controller
         $video->youtube_id = $youtube_id;
         $video->title = $request->input('title');
         $video->description = $request->input('description');
-        $video->category_id = (int)$request->input('category');
+        $video->category_id = (int) $request->input('category');
         $video->save();
 
         return redirect('videos/'.$video->id);

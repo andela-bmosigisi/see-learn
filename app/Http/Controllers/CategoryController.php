@@ -53,14 +53,15 @@ class CategoryController extends Controller
         ]);
 
         $this->user->categories()->create($request->all());
-        if (session()->has('redirect_uri'))
+        if (session()->has('redirect_uri')) {
             return redirect(session()->pull('redirect_uri'));
+        }
 
         return redirect('/categories/manage')
             ->with(
                 'msg',
                 'Category created successfully.'
-            ); 
+            );
     }
 
     /**
@@ -71,12 +72,13 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
-        if (!$this->userOwnsCategory($category))
+        if (! $this->userOwnsCategory($category)) {
             return redirect('/dashboard')
                 ->with(
                     'msg',
                     'Sorry, you did not create that category.'
                 );
+        }
 
         return view('categories.edit', ['category' => $category]);
     }
@@ -91,12 +93,13 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $category = Category::find($id);
-        if (!$this->userOwnsCategory($category))
+        if (! $this->userOwnsCategory($category)) {
             return redirect('/dashboard')
                 ->with(
                     'msg',
                     'Sorry, you did not create that category.'
                 );
+        }
 
         $this->validate($request, [
             'description' => 'required|max:200',
@@ -132,7 +135,7 @@ class CategoryController extends Controller
      * Validate whether user owns the category.
      *
      * @param \Learn\Category
-     * @return boolean
+     * @return bool
      */
     private function userOwnsCategory($category)
     {
