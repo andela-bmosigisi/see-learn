@@ -93,13 +93,6 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $category = Category::find($id);
-        if (! $this->userOwnsCategory($category)) {
-            return redirect('/dashboard')
-                ->with(
-                    'msg',
-                    'Sorry, you did not create that category.'
-                );
-        }
 
         $this->validate($request, [
             'description' => 'required|max:200',

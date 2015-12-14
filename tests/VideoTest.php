@@ -7,6 +7,19 @@ class VideoTest extends TestCase
     use DatabaseMigrations;
 
     /**
+     * Test that the video listing is displayed.
+     *
+     * @return void
+     */
+    public function testVideoListingPageIsLoaded()
+    {
+        $video = factory('Learn\Video')->create();
+
+        $this->visit('/')
+            ->see($video->category->name);
+    }
+
+    /**
      * Test that videos are successfully created.
      *
      * @return void
@@ -17,11 +30,33 @@ class VideoTest extends TestCase
         factory('Learn\Category')->create();
         $this->actingAs($user)
             ->visit('/videos/add')
-            ->type('Abitrary Title', 'title')
+            ->type('Arbitrary Title', 'title')
             ->type('https://www.youtube.com/watch?v=XpqqjU7u5Yc', 'link')
             ->type('This video is for testing', 'description')
             ->press('Add')
-            ->see('Abitrary Title');
+            ->see('Arbitrary Title');
+    }
+
+    /**
+     * Test video upload without category is redirected
+     * to the right route.
+     *
+     * @return void
+     */
+    public function testUploadWithoutCategory()
+    {
+        $user = factory('Learn\User')->create();
+        $this->actingAs($user)
+            ->visit('/videos/add')
+            ->type('myCat', 'name')
+            ->type('This is a category description', 'description')
+            ->press('Add')
+            ->visit('/videos/add')
+            ->type('Arbitrary Title', 'title')
+            ->type('https://www.youtube.com/watch?v=XpqqjU7u5Yc', 'link')
+            ->type('This video is for testing', 'description')
+            ->press('Add')
+            ->see('Arbitrary Title');
     }
 
     /**
@@ -82,5 +117,16 @@ class VideoTest extends TestCase
             ->visit('/videos/'.$video->id)
             ->click('Delete')
             ->see('Video deleted successfully.');
+    }
+
+    /**
+     * Test that viewing a non-existing video is impossible.
+     *
+     * @return void
+     */
+    public function testOnlyExistingVideosAreViewable()
+    {
+        $this->visit('/videos/999')
+            ->see('Video not found.');
     }
 }

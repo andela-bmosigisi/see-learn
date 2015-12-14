@@ -82,7 +82,7 @@ class VideoController extends Controller
         $video = Video::find($id);
 
         if (is_null($video)) {
-            return 'video not found';
+            return redirect('/')->with('msg', 'Video not found');
         }
         $videoUrl = 'http://www.youtube.com/embed/'.$video->youtube_id;
 
@@ -124,9 +124,6 @@ class VideoController extends Controller
     public function update(VideoFormRequest $request, $id)
     {
         $video = Video::find($id);
-        if (is_null($video)) {
-            return 'video not found';
-        }
 
         $youtube_id = $this->getVideoId($request->input('link'));
         $video->youtube_id = $youtube_id;
