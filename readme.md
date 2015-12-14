@@ -1,7 +1,7 @@
 # See, Learn.
 
 [![StyleCI](https://styleci.io/repos/46489764/shield)](https://styleci.io/repos/46489764)
-![CircleCI](https://travis-ci.org/andela-bmosigisi/see-learn.svg?branch=develop)
+[![Travis](https://travis-ci.org/andela-bmosigisi/see-learn.svg?branch=develop)](https://travis-ci.org/andela-bmosigisi/see-learn/)
 [![Coverage Status](https://coveralls.io/repos/andela-bmosigisi/see-learn/badge.svg?branch=develop&service=github)](https://coveralls.io/github/andela-bmosigisi/see-learn?branch=develop)
 
 [Official Website](http://see-learn.herokuapp.com)
