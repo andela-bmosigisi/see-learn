@@ -22,9 +22,13 @@ class VideoController extends Controller
      */
     public function index()
     {
-        $videos = DB::table('videos')->paginate(6);
+        // Eager load the videos with categories.
+        $videos = Video::with('category')->paginate(6);
+        $categories = Category::all();
 
-        return view('landing', ['videos' => $videos]);
+        return view('landing', ['videos' => $videos, 
+            'categories' => $categories
+        ]);
     }
 
     /**
