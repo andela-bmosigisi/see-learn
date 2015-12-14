@@ -56,10 +56,10 @@ class UserProfileTest extends TestCase
         $absolutePathToFile = __DIR__.'/../resources/assets/beatles_face.jpg';
 
         $this->actingAs($user)
-            ->visit('/users/edit/'.$user->id)
+            ->visit('/user/'.$user->id.'/edit')
             ->attach($absolutePathToFile, 'avatar')
             ->type('testing@test.com', 'email')
             ->press('Update')
-            ->see('testing@test.com');
+            ->seePageIs('/dashboard');
     }
 }

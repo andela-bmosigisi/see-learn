@@ -20,6 +20,7 @@
             <exclude>
                 <directory>app/Http/Controllers/Auth/</directory>
                 <directory>app/Console/</directory>
+                <directory>app/Exceptions/</directory>
             </exclude>
         </whitelist>
     </filter>

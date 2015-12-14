@@ -23,7 +23,7 @@ class UserProfileRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|min:6|max:60',
+            'name' => 'required|max:60',
             'email' => 'required|email',
             'avatar' => 'mimes:jpeg,bmp,png',
         ];
