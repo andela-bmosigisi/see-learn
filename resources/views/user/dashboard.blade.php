@@ -32,6 +32,11 @@
         </a>
       </h3>
       <!-- Loop through categories created by this user -->
+      @foreach ($user->categories as $category)
+        <a href="/categories/{{ $category->id }}">
+          {{ $category->name }}
+        </a>
+      @endforeach
     </div>
   </div>
   <div class="row">

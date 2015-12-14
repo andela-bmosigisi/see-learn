@@ -39,12 +39,16 @@
           </p>
         </div>
       @endforeach
-      <div class="divider"></div>
       <div class="col-md-6">
         {!! $videos->render() !!}
       </div>
     @else
-
+      <div class="col-lg-4 col-md-offset-4">
+        <p>
+          No videos have been added yet.
+          <a href="/videos/add">Create</a> one now.
+        </p>
+      </div>
     @endif
   </div>
 @endsection

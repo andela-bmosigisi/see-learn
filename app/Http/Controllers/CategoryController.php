@@ -9,7 +9,7 @@ class CategoryController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['show']]);
         $this->user = auth()->user();
     }
 
@@ -108,6 +108,22 @@ class CategoryController extends Controller
                 'msg',
                 'Category updated successfully.'
             );
+    }
+
+    /**
+     * Show all the videos of a particular category.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $category = Category::find($id);
+
+        return view(
+            'categories.show',
+            ['category' => $category, 'videos' => $category->videos()->paginate(6)]
+        );
     }
 
     /**
