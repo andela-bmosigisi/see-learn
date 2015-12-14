@@ -127,6 +127,6 @@ class VideoTest extends TestCase
     public function testOnlyExistingVideosAreViewable()
     {
         $this->visit('/videos/999')
-            ->see('Video not found.');
+            ->see('Video not found');
     }
 }
