@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
-
 @section('content')
   @include('partials.navigation')
+  @include('partials.message')
   @include('partials.alert')
   <div class="col-lg-8 col-md-offset-2">
     <form role="form" action="/categories/add" method="POST">

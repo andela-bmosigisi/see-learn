@@ -24,14 +24,14 @@ $factory->define(Learn\Video::class, function (Faker\Generator $faker) {
     $randomVideoIds =
         ['AWLLOTKrNok', 'EAK_MqX_ox4', 'ABRP_5RYhqU', 'dRfW7tuG6ZQ'];
     $length = count($randomVideoIds);
-    $category = factory('Learn\Category')->create()->id;
+    $category = factory('Learn\Category')->create();
 
     return [
         'title' => $faker->word,
         'description' => $faker->sentence,
         'youtube_id' => $randomVideoIds[rand(1, $length - 1)],
         'user_id' => $category->user->id,
-        'category_id' => $category,
+        'category_id' => $category->id,
     ];
 });
 

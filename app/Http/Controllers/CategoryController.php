@@ -53,6 +53,8 @@ class CategoryController extends Controller
         ]);
 
         $this->user->categories()->create($request->all());
+        if (session()->has('redirect_uri'))
+            return redirect(session()->pull('redirect_uri'));
 
         return redirect('/categories/manage')
             ->with(

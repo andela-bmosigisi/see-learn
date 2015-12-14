@@ -35,6 +35,12 @@ class VideoController extends Controller
     public function create()
     {
         $categories = Category::all();
+        if ($categories->count() === 0) {
+            session()->put('redirect_uri', '/videos/add');
+
+            return redirect('/categories/add')
+                ->with('msg', 'Create a category first.');
+        }
 
         return view('videos.create',
             ['user' => $this->user, 'categories' => $categories,
