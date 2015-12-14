@@ -26,12 +26,17 @@
     </div>
     <div class="col-lg-3">
       <h3>
-        Categories 
+        <a href="/categories/manage">Categories</a> 
         <a href="/categories/add" class="btn btn-primary btn-sm">
           <i class="fa fa-lg fa-plus"></i>
         </a>
       </h3>
       <!-- Loop through categories created by this user -->
+      @foreach ($user->categories as $category)
+        <a href="/categories/{{ $category->id }}">
+          {{ $category->name }}
+        </a>
+      @endforeach
     </div>
   </div>
   <div class="row">
@@ -44,6 +49,10 @@
       @foreach($user->videos as $video)
         <div class="col-lg-4 video-container">
           <a href="/videos/{{ $video->id }}"><h4> {{ $video->title }} </h4></a>
+          <small>
+            Category: 
+            <a href="/categories/{{ $video->category->id }}">{{ $video->category->name }}</a>
+          </small>
           <a href="/videos/{{ $video->id }}">
             <img src="http://img.youtube.com/vi/{{ $video->youtube_id }}/hqdefault.jpg" class="video-thumbnail">
           </a>

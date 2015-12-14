@@ -4,7 +4,7 @@ namespace Learn;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Video extends Model
+class Category extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,15 +12,13 @@ class Video extends Model
      * @var array
      */
     protected $fillable = [
-        'youtube_id',
-        'title',
+        'name',
         'description',
         'user_id',
-        'category_id',
     ];
 
     /**
-     * A video belongs to a particular user.
+     * A category is made by a particular user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\Relation
      */
@@ -30,12 +28,12 @@ class Video extends Model
     }
 
     /**
-     * A video belongs to a particular category.
+     * A category may have many videos.
      *
      * @return \Illuminate\Database\Eloquent\Relations\Relation
      */
-    public function category()
+    public function videos()
     {
-        return $this->belongsTo('Learn\Category');
+        return $this->hasMany('Learn\Video');
     }
 }

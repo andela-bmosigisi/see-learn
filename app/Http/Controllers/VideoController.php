@@ -2,8 +2,8 @@
 
 namespace Learn\Http\Controllers;
 
-use DB;
 use Learn\Video;
+use Learn\Category;
 use Learn\Http\Requests\VideoFormRequest;
 
 class VideoController extends Controller
@@ -21,9 +21,13 @@ class VideoController extends Controller
      */
     public function index()
     {
-        $videos = DB::table('videos')->paginate(6);
+        // Eager load the videos with categories.
+        $videos = Video::with('category')->paginate(6);
+        $categories = Category::all();
 
-        return view('landing', ['videos' => $videos]);
+        return view('landing', ['videos' => $videos,
+            'categories' => $categories,
+        ]);
     }
 
     /**
@@ -33,7 +37,17 @@ class VideoController extends Controller
      */
     public function create()
     {
-        return view('videos.create', ['user' => $this->user]);
+        $categories = Category::all();
+        if ($categories->count() === 0) {
+            session()->put('redirect_uri', '/videos/add');
+
+            return redirect('/categories/add')
+                ->with('msg', 'Create a category first.');
+        }
+
+        return view('videos.create',
+            ['user' => $this->user, 'categories' => $categories,
+        ]);
     }
 
     /**
@@ -51,6 +65,7 @@ class VideoController extends Controller
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'user_id' => $this->user->id,
+            'category_id' => (int) $request->input('category'),
         ]);
 
         return redirect('videos/'.$video->id);
@@ -92,8 +107,11 @@ class VideoController extends Controller
         $video = Video::find($id);
         $video->link = 'http://www.youtube.com/watch?v='
             .$video->youtube_id;
+        $categories = Category::all();
 
-        return view('videos.edit', ['video' => $video]);
+        return view('videos.edit', ['video' => $video,
+            'categories' => $categories,
+        ]);
     }
 
     /**
@@ -114,6 +132,7 @@ class VideoController extends Controller
         $video->youtube_id = $youtube_id;
         $video->title = $request->input('title');
         $video->description = $request->input('description');
+        $video->category_id = (int) $request->input('category');
         $video->save();
 
         return redirect('videos/'.$video->id);

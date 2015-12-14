@@ -18,11 +18,14 @@ class CreateVideosTable extends Migration
             $table->string('title', 60);
             $table->string('description', 200);
             $table->integer('user_id')->unsigned();
+            $table->integer('category_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('user_id')
                 ->references('id')->on('users')
                 ->onDelete('cascade');
+            $table->foreign('category_id')
+                ->references('id')->on('categories');
         });
     }
 

@@ -14,6 +14,7 @@ class VideoTest extends TestCase
     public function testUploadVideo()
     {
         $user = factory('Learn\User')->create();
+        factory('Learn\Category')->create();
         $this->actingAs($user)
             ->visit('/videos/add')
             ->type('Abitrary Title', 'title')
