@@ -98,8 +98,11 @@ class VideoController extends Controller
         $video = Video::find($id);
         $video->link = 'http://www.youtube.com/watch?v='
             .$video->youtube_id;
+        $categories = Category::all();
 
-        return view('videos.edit', ['video' => $video]);
+        return view('videos.edit', ['video' => $video,
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -120,6 +123,7 @@ class VideoController extends Controller
         $video->youtube_id = $youtube_id;
         $video->title = $request->input('title');
         $video->description = $request->input('description');
+        $video->category_id = (int)$request->input('category');
         $video->save();
 
         return redirect('videos/'.$video->id);
