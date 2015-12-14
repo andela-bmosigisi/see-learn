@@ -53,4 +53,19 @@ class CategoryTest extends TestCase
             ->press('Update')
             ->see('New Description');
     }
+
+    /**
+     * Test that only owners of categories can edit them.
+     *
+     * @return void
+     */
+    public function testEditIsForCategoryOwners()
+    {
+        $user = factory('Learn\User')->create();
+        $category = factory('Learn\Category')->create();
+
+        $this->actingAs($user)
+            ->visit('/categories/edit/'.$category->id)
+            ->see('Sorry, you did not create that category.');
+    }
 }

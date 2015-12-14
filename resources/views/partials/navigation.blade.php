@@ -9,14 +9,6 @@
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-left nav-search" role="search">
-        <div class="input-group input-group-sm" style="min-width:300px;">
-          <input type="text" class="form-control input-search" placeholder="Search" name="srch-term" id="srch-term">
-          <div class="input-group-btn">
-            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-          </div>
-        </div>
-      </form>
       <ul class="nav navbar-nav navbar-right">
       @if (null !== ($user = auth()->user()))
         <li class="profile-list">

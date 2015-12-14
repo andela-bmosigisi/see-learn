@@ -1,13 +1,13 @@
 language: php
 php:
   - 5.6
-  - hhvm
 
 branches:
   only:
     - master
     - staging
     - develop
+    - feature/coveralls
 
 before_script:
   - composer self-update
@@ -18,3 +18,6 @@ before_script:
 script:
   - php artisan key:generate 
   - phpunit
+
+after_script:
+  - php vendor/bin/coveralls -v
