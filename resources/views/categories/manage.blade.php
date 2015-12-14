@@ -2,8 +2,16 @@
 
 @section('content')
   @include('partials.navigation')
-  @include('partials.alert')
   @include('partials.message')
+  <div class="row">
+    <div class="col-lg-4 col-md-offset-3">
+      <p>
+        <a href="/categories/add" class="btn btn-primary btn-sm">
+          <i class="fa fa-lg fa-plus"></i>
+        </a> Add Category
+      </p>
+    </div>
+  </div>
   <div class="row">
     @if ($categories->count() > 0)
     <div class="col-lg-10 col-md-offset-1">
@@ -23,8 +31,7 @@
             <td>{{ $category->description }}</td>
             <td>{{ $category->videos->count() }}</td>
             <td>
-              <button class="btn btn-primary btn-xs">Edit</button>
-              <a href="/categories/delete/{{ $category->id }}" class="btn btn-primary btn-xs">Delete</a>
+              <a href="/categories/edit/{{ $category->id }}" class="btn btn-primary btn-xs">Edit</a>
             </td>
           </tr>
         @endforeach

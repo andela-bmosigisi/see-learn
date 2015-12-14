@@ -2,10 +2,8 @@
 
 namespace Learn\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use Learn\Category;
-use Learn\Http\Requests;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -16,18 +14,29 @@ class CategoryController extends Controller
     }
 
     /**
-     * Show the form for managing categories.
+     * Show the page for managing categories.
      *
      * @return \Illuminate\Http\Response
      */
     public function manage()
     {
-        $categories = $this->user->categories;
+        $categories = $this->user->categories
+            ->sortByDesc('updated_at');
 
         return view(
             'categories.manage',
             ['categories' => $categories]
         );
+    }
+
+    /**
+     * Show the form for creating a new category.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('categories.create');
     }
 
     /**
@@ -38,18 +47,36 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:20',
+            'description' => 'required|max:200',
+        ]);
+
+        $this->user->categories()->create($request->all());
+
+        return redirect('/categories/manage')
+            ->with(
+                'msg',
+                'Category created successfully.'
+            ); 
     }
 
     /**
-     * Display the videos of the specified category.
+     * Show the form for editing categories.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        if (!$this->userOwnsCategory($category))
+            return redirect('/dashboard')
+                ->with(
+                    'msg',
+                    'Sorry, you did not create that category.'
+                );
+
+        return view('categories.edit', ['category' => $category]);
     }
 
     /**
@@ -61,20 +88,36 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+        if (!$this->userOwnsCategory($category))
+            return redirect('/dashboard')
+                ->with(
+                    'msg',
+                    'Sorry, you did not create that category.'
+                );
+
+        $this->validate($request, [
+            'description' => 'required|max:200',
+        ]);
+
+        $category->description = $request->input('description');
+        $category->save();
+
+        return redirect('/categories/manage')
+            ->with(
+                'msg',
+                'Category updated successfully.'
+            );
     }
 
     /**
-     * Remove the specified category from storage.
+     * Validate whether user owns the category.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param \Learn\Category
+     * @return boolean
      */
-    public function destroy($id)
+    private function userOwnsCategory($category)
     {
-        Category::destroy($id);
-
-        return redirect('/categories/manage')
-            ->with('msg', 'Category deleted successfully.');
+        return $this->user->id === $category->user->id;
     }
 }

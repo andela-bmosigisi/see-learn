@@ -26,7 +26,7 @@
     </div>
     <div class="col-lg-3">
       <h3>
-        Categories 
+        <a href="/categories/manage">Categories</a> 
         <a href="/categories/add" class="btn btn-primary btn-sm">
           <i class="fa fa-lg fa-plus"></i>
         </a>

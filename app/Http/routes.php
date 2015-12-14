@@ -50,4 +50,8 @@ Route::post('videos/update/{id}', 'VideoController@update');
 
 // Category routes
 Route::get('categories/manage', 'CategoryController@manage');
-Route::get('categories/delete/{id}', 'CategoryController@destroy');
+Route::get('categories/add', 'CategoryController@create');
+Route::get('categories/{id}', 'CategoryController@show');
+Route::post('categories/add', 'CategoryController@store');
+Route::get('categories/edit/{id}', 'CategoryController@edit');
+Route::post('categories/update/{id}', 'CategoryController@update');
