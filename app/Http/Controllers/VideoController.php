@@ -4,6 +4,7 @@ namespace Learn\Http\Controllers;
 
 use DB;
 use Learn\Video;
+use Learn\Category;
 use Learn\Http\Requests\VideoFormRequest;
 
 class VideoController extends Controller
@@ -33,7 +34,11 @@ class VideoController extends Controller
      */
     public function create()
     {
-        return view('videos.create', ['user' => $this->user]);
+        $categories = Category::all();
+
+        return view('videos.create',
+            ['user' => $this->user, 'categories' => $categories,
+        ]);
     }
 
     /**
@@ -51,6 +56,7 @@ class VideoController extends Controller
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'user_id' => $this->user->id,
+            'category_id' => (int)$request->input('category'),
         ]);
 
         return redirect('videos/'.$video->id);

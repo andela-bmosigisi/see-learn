@@ -16,6 +16,7 @@ class Video extends Model
         'title',
         'description',
         'user_id',
+        'category_id',
     ];
 
     /**

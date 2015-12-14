@@ -29,7 +29,18 @@
                 <textarea class="form-control" name="description">{{ old('description') }}</textarea>
               </div>
             </div>
-            <!-- Add categories here -->
+            <div class="form-group">
+              <label for="link" class="col-lg-3 control-label">Category</label>
+              <div class="col-lg-9">
+                <select class="form-control" name="category">
+                  @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">
+                      {{ $category->name }}
+                    </option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
             <div class="form-group">
               <div class="col-lg-10 col-lg-offset-3">
                 <button type="submit" class="btn btn-primary">Add</button>
