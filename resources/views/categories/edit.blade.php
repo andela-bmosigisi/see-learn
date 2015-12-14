@@ -14,7 +14,7 @@
         <label for="description"> Description: </label>
         <textarea class="form-control" name="description">{{ $category->description }}</textarea>
       </div>
-      <button type="submit" class="btn-sm btn-default">Update</button>
+      <button type="submit" class="btn btn-default">Update</button>
     </form>
   </div>
 @endsection
