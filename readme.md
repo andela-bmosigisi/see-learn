@@ -14,7 +14,7 @@ You may visit the [website](http://see-learn.herokuapp.com) to access the applic
 
 To download and use this project you need:
 
-- [PHP](http://php.net/downloads.php)
+- [PHP](http://php.net/downloads.php) ^5.5.20
 - [Composer](https://getcomposer.org)
 - [Git](https://git-scm.com/downloads)
 
