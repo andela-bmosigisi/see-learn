@@ -6,7 +6,7 @@
 
 [Official Website](http://see-learn.herokuapp.com)
 
-See-learn is a learning management system that allows users to learn various technologies, using the powerful resource of video, especially on Youtube. Users may upload video URLs which are accessed by other users, or by themselves on a later date.
+See-learn is a learning management system that allows users to learn various technologies, using the powerful resource of video, especially on YouTube. Users may upload video URLs which are accessed by other users, or by themselves on a later date.
 
 ## Usage
 
@@ -14,12 +14,9 @@ You may visit the [website](http://see-learn.herokuapp.com) to access the applic
 
 To download and use this project you need:
 
-- PHP
-  Visit this [website](http://php.net/downloads.php) to download and install it.
-- Composer
-  Visit the [official website](https://getcomposer.org) to get it. 
-- Git
-  Visit [here](https://git-scm.com/downloads) to download and install git.
+- [PHP](http://php.net/downloads.php)
+- [Composer](https://getcomposer.org)
+- [Git](https://git-scm.com/downloads)
 
 Then clone the repository in your local machine
 
@@ -27,7 +24,7 @@ Then clone the repository in your local machine
 $ git clone https://github.com/andela-bmosigisi/see-learn
 ```
 
-Naviate to see-learn
+Naviate to `see-learn`
 ```bash
 $ cd see-learn
 ```
@@ -53,7 +50,7 @@ You may also use laravel homestead to serve the app. Get it [here](http://larave
 
 ## Features
 
-- Uploading of youtube videos.
+- Uploading of YouTube videos.
 - Editing and Deleting of videos.
 - Adding and Editing of video categories.
 - Organisation of videos into categories.
