@@ -1,0 +1,22 @@
+language: php
+php:
+  - 5.6
+
+branches:
+  only:
+    - master
+    - develop
+    - feature/coveralls
+
+before_script:
+  - composer self-update
+  - composer install --prefer-source --no-interaction --dev
+  - cp .env.travis .env
+  - mysql -e 'create database learn;'
+
+script:
+  - php artisan key:generate 
+  - phpunit
+
+after_script:
+  - php vendor/bin/coveralls -v

@@ -1,27 +1,73 @@
-## Laravel PHP Framework
+# See, Learn.
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+[![StyleCI](https://styleci.io/repos/46489764/shield)](https://styleci.io/repos/46489764)
+[![Travis](https://travis-ci.org/andela-bmosigisi/see-learn.svg?branch=develop)](https://travis-ci.org/andela-bmosigisi/see-learn/)
+[![Coverage Status](https://coveralls.io/repos/andela-bmosigisi/see-learn/badge.svg?branch=develop&service=github)](https://coveralls.io/github/andela-bmosigisi/see-learn?branch=develop)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+[Official Website](http://see-learn.herokuapp.com)
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+See-learn is a learning management system that allows users to learn various technologies, using the powerful resource of video, especially on YouTube. Users may upload video URLs which are accessed by other users, or by themselves on a later date.
 
-## Official Documentation
+## Usage
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+You may visit the [website](http://see-learn.herokuapp.com) to access the application.
+
+To download and use this project you need:
+
+- [PHP](http://php.net/downloads.php)
+- [Composer](https://getcomposer.org)
+- [Git](https://git-scm.com/downloads)
+
+Then clone the repository in your local machine
+
+```bash
+$ git clone https://github.com/andela-bmosigisi/see-learn
+```
+
+Naviate to `see-learn`
+```bash
+$ cd see-learn
+```
+
+Install all the required dependencies.
+```bash
+$ composer install
+```
+
+Create an environment file with your systems credentials, by editing .env.example then run
+```bash
+$ cp .env.example .env
+```
+
+To serve the application in development mode:
+```bash
+$ php artisan serve
+```
+
+You can now access the application in the browser, using the URL provided in the command line.
+
+You may also use laravel homestead to serve the app. Get it [here](http://laravel.com/docs/5.1/homestead).
+
+## Features
+
+- Uploading of YouTube videos.
+- Editing and Deleting of videos.
+- Adding and Editing of video categories.
+- Organisation of videos into categories.
+- Watching of videos, uploaded by all users.
+
+## Testing
+
+```bash
+$ phpunit
+```
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+You may contribute to this project in one of two ways:
+- Open an issue to report a bug.
+- Branch from develop, code, and send a pull request.
 
-## Security Vulnerabilities
+## License
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+This is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)

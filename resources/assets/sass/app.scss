@@ -1,2 +1,114 @@
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "variables";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "bootswatch";
+@import "font-awesome/scss/font-awesome.scss";
+@import "bootstrap-social.scss";
 
+@mixin border-radius($radius) {
+  border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+}
+
+.social ul li {
+    display: inline-block;
+    padding: 5px 20px 20px 20px;
+    margin: 5px 30px 30px 30px;
+}
+
+.social ul {
+    list-style-type: none;
+}
+body {
+    background-image: url('/img/bkg.png');
+    background-repeat: repeat-x;
+}
+.profile-list {
+    line-height: 60px;
+}
+.profile-image {
+    width: 30px;
+    height: 30px;
+    margin: auto;
+}
+.nav-search {
+    margin-top: 15px;
+}
+.profile-pic {
+    width: 240px;
+    height: 240px;
+    margin: auto;
+    border: solid #F4F4F4 1px;
+}
+#pic-div {
+    background-color: white;
+}
+.large-text {
+    font-size: 120%;
+}
+.video-thumbnail {
+    width: 350px;
+    padding: 20px 20px 20px 0px;
+}
+.section-title {
+    margin-top: 20px;
+    padding-left: 30px;
+    float: left;
+    border-bottom: solid #E7E7E7 1px;
+}
+.video-container {
+    margin-top: 10px;
+    border-bottom: solid #E7E7E7 1px;
+}
+.video-title h3 {
+    padding: 5px;
+    border-bottom: solid #E7E7E7 1px;
+    color: $brand-success;
+}
+.file-upload {
+    margin-right: 15px;
+}
+.video-content {
+    display: inline-block;
+    padding: 10px;
+    border: solid $gray-lighter 1px;
+}
+.landing-title {
+    text-align: center;
+    color: $gray-lighter;
+}
+.landing-title li {
+    text-align: left;
+    list-style-type: none;
+    font-size: 110%;
+    margin-left: 50px;
+}
+.jumbotron {
+    background-image: url('/img/landing.jpg');
+}
+.category-area {
+    padding: 30px;
+    padding-top: 0px;
+    margin-bottom: 4px;
+    border-bottom: solid $gray-light 1px;
+}
+.category {
+    height: 30px;
+}
+.category p{
+    background-color: $gray-lighter;
+    border: solid $gray-light 1px;
+    text-align: center;
+    @include border-radius(30px 30px 30px 30px);
+}
+.category-area a {
+    color: $text-color;
+}
+.category-area h3 {
+    padding-bottom: 15px;
+}
+.sub {
+    font-size: 80% !important;
+}
