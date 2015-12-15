@@ -33,9 +33,12 @@
   </div>
   <div class="row">
     <div class="col-lg-12 section-title">
-      <h3> Videos <a href="/videos/add" class="btn btn-warning btn-sm">
-        <i class="fa fa-lg fa-plus"></i>
-      </a></h3>
+      <span style="float:left">
+        <h3> Videos </h3>
+      </span>
+      <span style="float:right">
+        <a href="/videos/add" class="btn btn-warning">Upload a video</a>
+      </span>
     </div>
   </div>
   <div class="row">
