@@ -11,23 +11,15 @@
       </div>
     </div>
     <div class="col-lg-3">
-      <a href="/user/{{ $user->id }}/edit"><h3>Profile</h3></a>
+      <a href="/user/{{ $user->id }}/edit"><h3>Profile <i class="fa fa"></i></h3></a>
       <p> {{ $user->name }}</p>
       <p> {{ $user->email or 'no email' }} </p>
       <p> Uploads: <span class="large-text">{{ $count = $user->videos->count() }}</span></p>
     </div>
     <div class="col-lg-3">
       <h3>
-        Uploads
-        <a href="/videos/add" class="btn btn-primary btn-sm">
-          <i class="fa fa-lg fa-plus"></i>
-        </a>
-      </h3>
-    </div>
-    <div class="col-lg-3">
-      <h3>
         <a href="/categories/manage">Categories</a> 
-        <a href="/categories/add" class="btn btn-primary btn-sm">
+        <a href="/categories/add" class="btn btn-warning btn-sm">
           <i class="fa fa-lg fa-plus"></i>
         </a>
       </h3>
@@ -40,8 +32,10 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-3 col-sm-offset-5 section-title">
-      <h3> Videos </h3>
+    <div class="col-lg-12 section-title">
+      <h3> Videos <a href="/videos/add" class="btn btn-warning btn-sm">
+        <i class="fa fa-lg fa-plus"></i>
+      </a></h3>
     </div>
   </div>
   <div class="row">

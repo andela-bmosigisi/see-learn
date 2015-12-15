@@ -8887,7 +8887,9 @@ body {
   padding: 20px 20px 20px 0px; }
 
 .section-title {
-  padding: 20px;
+  margin-top: 20px;
+  padding-left: 30px;
+  float: left;
   border-bottom: solid #E7E7E7 1px; }
 
 .video-container {
@@ -8921,16 +8923,31 @@ body {
   background-image: url("/img/landing.jpg"); }
 
 .category-area {
-  padding: 10px;
+  padding: 30px;
   padding-top: 0px;
   margin-bottom: 4px;
   border-bottom: solid #DFD7CA 1px; }
 
 .category {
+  height: 30px; }
+
+.category p {
   background-color: #F8F5F0;
-  border: solid #DFD7CA 1px; }
+  border: solid #DFD7CA 1px;
+  text-align: center;
+  border-radius: 30px 30px 30px 30px;
+  -webkit-border-radius: 30px 30px 30px 30px;
+  -moz-border-radius: 30px 30px 30px 30px;
+  -ms-border-radius: 30px 30px 30px 30px;
+  -o-border-radius: 30px 30px 30px 30px; }
 
 .category-area a {
   color: #3E3F3A; }
+
+.category-area h3 {
+  padding-bottom: 15px; }
+
+.sub {
+  font-size: 80% !important; }
 
 /*# sourceMappingURL=app.css.map */

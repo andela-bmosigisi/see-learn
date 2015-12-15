@@ -8,14 +8,13 @@
     <div class="row">
       <div class="col-lg-4 col-sm-offset-4 landing-title">
         <h1>Learn</h1>
-        <p class="lead">
+        <div class="lead">
           Start learning with <strong>3</strong> simple steps
-          <ul>
-            <li><a href="/register">Create</a> an account</li>
-            <li>Upload a video</li>
-            <li>Get limitless watch time</li>
-          </ul>
-        </p>
+          <p class="sub">Signup &bull;
+          Upload &bull;
+          Watch</p>
+          <a href="/login" class="btn btn-warning">Get Started</a>
+        </div>
       </div>
     </div>
   </div>
