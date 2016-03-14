@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col-lg-7">
         <div class="video-content">
-          <iframe width="780" height="520"
+          <iframe width="780" height="520" allowfullscreen="allowfullscreen"
             src="{{ $videoUrl }}">
           </iframe>
         </div>
